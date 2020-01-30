@@ -1,0 +1,31 @@
+<h2>User Details</h2> 
+
+<hr/>
+<div *ngIf="user">
+  <div>
+    <label><b>Name: </b></label> {{user.name}}
+  </div>
+</div>
+
+ <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>State</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userTask of usersTasks | async">
+          <td>{{userTask.description}}</td>
+          <td>{{userTask.state}}</td>
+          <td><button (click)="deleteUserTask(userTask.id)" class="btn btn-danger">Delete</button>
+              <button (click)="userDetails(user.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to User List</button><br>
